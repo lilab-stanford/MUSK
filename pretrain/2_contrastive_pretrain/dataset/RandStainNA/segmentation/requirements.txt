@@ -1,0 +1,6 @@
+opencv-python
+pyyaml
+scipy
+scikit-learn
+scikit-image
+fitter

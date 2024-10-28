@@ -1,0 +1,2 @@
+For Reviewers: The download link for the model weights and example data can be found in the "Code Availability" section at the end of the manuscript. 
+The weights will be publicly released once the paper is accepted.

@@ -1,0 +1,31 @@
+D:
+  avg:
+    distribution: laplace
+    mean: 0.029
+    std: 0.023
+  std:
+    distribution: laplace
+    mean: 0.013
+    std: 0.009
+E:
+  avg:
+    distribution: norm
+    mean: 0.021
+    std: 0.014
+  std:
+    distribution: laplace
+    mean: 0.013
+    std: 0.016
+H:
+  avg:
+    distribution: laplace
+    mean: 0.033
+    std: 0.031
+  std:
+    distribution: laplace
+    mean: 0.025
+    std: 0.019
+color_space: HED
+methods: Reinhard
+n_each_class: 0
+random: true

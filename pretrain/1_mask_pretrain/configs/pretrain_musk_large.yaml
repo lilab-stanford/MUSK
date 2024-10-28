@@ -1,0 +1,52 @@
+
+general:
+  gradient_accumulation_steps: 1
+  seed: 42
+  resume: null
+  auto_resume: true
+  start_epoch: 0
+  epochs: 100
+  save_ckpt_freq: 1
+
+model:
+  name: musk_large_patch16_384
+  patch_size: 16
+  num_mask_patches: 230
+  max_mask_patches_per_block: 100
+  min_mask_patches_per_block: 16
+  input_size: 384
+  drop_path: 0.1
+  max_text_len: 100
+  tokenizer: /path/to/tokenizer.spm
+
+
+visual_tokenizer:
+  tokenizer_model: vqkd_encoder_base_decoder_3x768x12_ctrans
+  second_input_size: 384
+  tokenizer_weight: /path/to/image_tokenizer.pth
+  codebook_size: 8192
+  codebook_dim: 32
+
+
+optimizer:
+  opt: "adamw"
+  opt_eps: 1e-8
+  opt_betas: [0.9, 0.999]
+  clip_grad: 1.0
+  momentum: 0.9
+  weight_decay: 0.05
+  weight_decay_end: 0.05
+  lr: 1.0e-4
+  warmup_lr: 1e-6
+  min_lr: 1e-5
+  warmup_epochs: 1
+  warmup_steps: -1
+
+dataset:
+  imagenet_default_mean_and_std: false
+  num_workers: 8
+  batch_size: 32
+  pin_mem: true
+  image_dir: /path/to/tcga_eval.tsv
+  text_dir: /path/to/pubmed_text.tsv
+

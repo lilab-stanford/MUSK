@@ -1,0 +1,2 @@
+musk_large_patch16_384,/mnt/musk/models/musk.pth
+conch,/mnt/conch/conch.pt
