@@ -6,7 +6,7 @@ Jinxi Xiang‡, Xiyue Wang‡, Xiaoming Zhang, Yinghua Xi, Feyisope Eweje, Yijia
 Li, Colin Bergstrom, Matthew Gopaulchan, Ted Kim, Kun-Hsing Yu, Sierra Willens, Francesca Maria
 Olguin, Jeffrey J. Nirschl, Joel Neal, Maximilian Diehn, Sen Yang, Ruijiang Li (‡Equal Contribution)
 
-_Lead Contact_: Ruijiang Li, Ph.D.
+_Lead Contact_: [Ruijiang Li](https://med.stanford.edu/lilab.html), Ph.D.
 
 Stanford University, Harvard University
 
