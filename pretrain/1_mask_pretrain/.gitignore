@@ -127,3 +127,4 @@ dmypy.json
 .files/
 .download/
 *.md
+!README.md
