@@ -1,10 +1,10 @@
 
 ## MUSK: A Vision-Language Foundation Model for Precision Oncology
-
+(Nature. 2024. In press)
 
 Jinxi Xiang‡, Xiyue Wang‡, Xiaoming Zhang, Yinghua Xi, Feyisope Eweje, Yijiang Chen, Yuchen
 Li, Colin Bergstrom, Matthew Gopaulchan, Ted Kim, Kun-Hsing Yu, Sierra Willens, Francesca Maria
-Olguin, Jeffrey J. Nirschl, Joel Neal, Maximilian Diehn, Sen Yang, Ruijiang Li (‡Equal Contribution)
+Olguin, Jeffrey J. Nirschl, Joel Neal, Maximilian Diehn, Sen Yang<sup>+</sup>, Ruijiang Li<sup>+</sup> (‡Equal Contribution)
 
 _Lead Contact_: [Ruijiang Li](https://med.stanford.edu/lilab.html), Ph.D.
 
@@ -219,6 +219,8 @@ and more tasks in `./benchmarks/demo.ipynb`.
 
 The project was built on top of many open-source repositories such as [Quilt1M](https://github.com/wisdomikezogwo/quilt1m) (training data image-text pairs), [torchscale](https://github.com/microsoft/torchscale) (model implementation), [accelerate](https://github.com/huggingface/accelerate) (model pretraining), [deepspeed](https://github.com/microsoft/DeepSpeed) (model pretraining), [pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning) (downstream finetuning), and [CLIP Benchmark](https://github.com/LAION-AI/CLIP_benchmark) (model evaluation). We thank the authors and developers for their contributions.
 
+## Issues
+- Please open new threads or address all questions to xiangjx@stanford.edu
 
 ## License
 
