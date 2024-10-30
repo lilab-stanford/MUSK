@@ -128,20 +128,26 @@ This section reproduces the results of cancer diagnosis/detection benchmarks, in
 
 The evaluated dataset includes:
 <small>
-* BookSet: [Download Link](https://warwick.ac.uk/fac/cross_fac/tia/data/arch)
-* PubmedSet: [Download Link](https://warwick.ac.uk/fac/cross_fac/tia/data/arch)
-* PatchCamelyon: [Download Link](https://patchcamelyon.grand-challenge.org/)
-* NCT-CRC-HE-100K: [Project Link](https://zenodo.org/record/1214456)
-* SICAPv2: [Download Link](https://www.biicancer.com/sicapv2-dataset)
-* Osteo: [Project Link](https://zenodo.org/record/3626656)
-* RenalCell: [Download Link](https://www.kaggle.com/mnassrib/renal-cell-carcinoma-rcc)
-* SkinCancer: [Project Link](https://www.isic-archive.com/)
-* LC25000: [Download Link](https://www.kaggle.com/andrewmvd/lung-and-colon-cancer-histopathological-images)
-* PanNuke: [Project Link](https://warwick.ac.uk/fac/cross_fac/tia/data/pannuke)
-* UniToPatho: [Project Link](https://zenodo.org/record/4295977)
-* WSSS4LUAD: [Download Link](https://github.com/sjin010/WSSS4LUAD)
-* BRACS (3 cls): [Download Link](https://www.bracs.icar.cnr.it/download/)
-* BRACS (6 cls): [Download Link](https://www.bracs.icar.cnr.it/download/)
+- **Quilt1M** is available at [https://github.com/wisdomikezogwo/quilt1m](https://github.com/wisdomikezogwo/quilt1m).  
+- **PathAsst** is available at [https://huggingface.co/datasets/jamessyx/PathCap](https://huggingface.co/datasets/jamessyx/PathCap).  
+- **PathVQA** is available at [https://huggingface.co/datasets/flaviagiammarino/path-vqa](https://huggingface.co/datasets/flaviagiammarino/path-vqa).  
+- **BookSet** and **PubmedSet** are available at [https://warwick.ac.uk/fac/cross_fac/tia/data/arch](https://warwick.ac.uk/fac/cross_fac/tia/data/arch).  
+- **PatchCamelyon** can be accessed at [https://patchcamelyon.grand-challenge.org/](https://patchcamelyon.grand-challenge.org/).  
+- **NCT-CRC-HE-100K** dataset is available at [https://zenodo.org/record/1214456](https://zenodo.org/record/1214456).  
+- **SICAPv2** can be downloaded from [https://data.mendeley.com/datasets/9xxm58dvs3/1](https://data.mendeley.com/datasets/9xxm58dvs3/1).  
+- **Osteo** dataset is available at [https://www.cancerimagingarchive.net/collection/osteosarcoma-tumor-assessment/](https://www.cancerimagingarchive.net/collection/osteosarcoma-tumor-assessment/).  
+- **RenalCell** can be downloaded from [https://zenodo.org/records/6528599](https://zenodo.org/records/6528599).  
+- **SkinCancer** is accessible at [https://www.isic-archive.com/](https://www.isic-archive.com/).  
+- **LC25000** dataset is available for download at [https://github.com/tampapath/lung_colon_image_set](https://github.com/tampapath/lung_colon_image_set).  
+- **PanNuke** can be accessed at [https://warwick.ac.uk/fac/cross_fac/tia/data/pannuke](https://warwick.ac.uk/fac/cross_fac/tia/data/pannuke).  
+- **UniToPatho** dataset is available at [https://ieee-dataport.org/open-access/unitopatho](https://ieee-dataport.org/open-access/unitopatho).  
+- **WSSS4LUAD** can be downloaded from [https://wsss4luad.grand-challenge.org/WSSS4LUAD/](https://wsss4luad.grand-challenge.org/WSSS4LUAD/).  
+- **BRACS** datasets for 3 and 6 classes are available for download at [https://www.bracs.icar.cnr.it/](https://www.bracs.icar.cnr.it/).  
+- **Visiomel** data (consortium SFP, SFD, CNPath) can be requested from the organizers: [https://www.drivendata.org/competitions/148/visiomel-melanoma/](https://www.drivendata.org/competitions/148/visiomel-melanoma/).  
+- **PathMMU** is available at [https://huggingface.co/datasets/jamessyx/PathMMU](https://huggingface.co/datasets/jamessyx/PathMMU).  
+- **BCNB** is available at [https://bcnb.grand-challenge.org/](https://bcnb.grand-challenge.org/).  
+- **MUV-IDH** is available at [https://doi.org/10.25493/WQ48-ZGX](https://doi.org/10.25493/WQ48-ZGX).  
+
 </small>
 
 First, download the necessary datasets. For demonstrations, we provide the example datasets [here](https://drive.google.com/drive/folders/15xlGg3HE4rVWz7ofg1rsgNwHGIFiO6Qa?usp=sharing). Download and unzip it to a local path, for example `/root/user/data/downstreams_demo`, then, change the directory path `dataset_root=/root/user/data/downstreams_demo`. The code will automatically extract features and perform evaluations.
