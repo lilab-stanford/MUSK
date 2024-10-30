@@ -158,7 +158,12 @@ def evaluate(model, train_dataloader, dataloader, fewshot_k, batch_size, num_wor
 
     # second, make a dataloader with k features per class. if k = -1, use all features.
     length = len(features)
-    perm = [p.item() for p in torch.randperm(length)]
+
+    # new generator
+    g = torch.Generator()
+    g.manual_seed(seed)
+    perm = torch.randperm(length, generator=g).tolist()
+
     idxs = []
     counts = {}
     num_classes = 0

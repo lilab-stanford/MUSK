@@ -185,6 +185,19 @@ def _as_list(l):
     return [l] if type(l) != list else l
 
 
+# seed everything
+def fix_seed(seed):
+    random.seed(seed)
+    os.environ["PYTHONHASHSEED"] = str(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    # torch.set_deterministic(True)  # torch < 1.8
+    torch.use_deterministic_algorithms(True, warn_only=True)  # torch >= 1.8
+
+
 def run(args, transforms=None):
     """Console script for clip_benchmark."""
 
@@ -199,7 +212,7 @@ def run(args, transforms=None):
     else:
         args.device = "cpu"
     # set seed.
-    torch.manual_seed(args.seed)
+    fix_seed(args.seed)
     task = args.task
     if args.dataset.startswith("wds/"):
         dataset_name = args.dataset.replace("wds/", "", 1)
