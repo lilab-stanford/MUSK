@@ -15,7 +15,7 @@ from clip_benchmark.model_collection import get_model_collection_from_file, mode
 from clip_benchmark.models import load_clip, MODEL_TYPES
 import torch.nn as nn
 import torchvision
-
+import numpy as np
 
 def get_parser_args():
     parser = argparse.ArgumentParser()
