@@ -128,9 +128,7 @@ This section reproduces the results of cancer diagnosis/detection benchmarks, in
 
 The evaluated dataset includes:
 <small>
-- **Quilt1M** is available at [https://github.com/wisdomikezogwo/quilt1m](https://github.com/wisdomikezogwo/quilt1m).  
-- **PathAsst** is available at [https://huggingface.co/datasets/jamessyx/PathCap](https://huggingface.co/datasets/jamessyx/PathCap).  
-- **PathVQA** is available at [https://huggingface.co/datasets/flaviagiammarino/path-vqa](https://huggingface.co/datasets/flaviagiammarino/path-vqa).  
+- **PathMMU** is available at [https://huggingface.co/datasets/jamessyx/PathMMU](https://huggingface.co/datasets/jamessyx/PathMMU).  
 - **BookSet** and **PubmedSet** are available at [https://warwick.ac.uk/fac/cross_fac/tia/data/arch](https://warwick.ac.uk/fac/cross_fac/tia/data/arch).  
 - **PatchCamelyon** can be accessed at [https://patchcamelyon.grand-challenge.org/](https://patchcamelyon.grand-challenge.org/).  
 - **NCT-CRC-HE-100K** dataset is available at [https://zenodo.org/record/1214456](https://zenodo.org/record/1214456).  
@@ -143,10 +141,6 @@ The evaluated dataset includes:
 - **UniToPatho** dataset is available at [https://ieee-dataport.org/open-access/unitopatho](https://ieee-dataport.org/open-access/unitopatho).  
 - **WSSS4LUAD** can be downloaded from [https://wsss4luad.grand-challenge.org/WSSS4LUAD/](https://wsss4luad.grand-challenge.org/WSSS4LUAD/).  
 - **BRACS** datasets for 3 and 6 classes are available for download at [https://www.bracs.icar.cnr.it/](https://www.bracs.icar.cnr.it/).  
-- **Visiomel** data (consortium SFP, SFD, CNPath) can be requested from the organizers: [https://www.drivendata.org/competitions/148/visiomel-melanoma/](https://www.drivendata.org/competitions/148/visiomel-melanoma/).  
-- **PathMMU** is available at [https://huggingface.co/datasets/jamessyx/PathMMU](https://huggingface.co/datasets/jamessyx/PathMMU).  
-- **BCNB** is available at [https://bcnb.grand-challenge.org/](https://bcnb.grand-challenge.org/).  
-- **MUV-IDH** is available at [https://doi.org/10.25493/WQ48-ZGX](https://doi.org/10.25493/WQ48-ZGX).  
 
 </small>
 
