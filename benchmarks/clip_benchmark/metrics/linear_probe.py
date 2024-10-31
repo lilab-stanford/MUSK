@@ -193,7 +193,12 @@ def evaluate(model, train_dataloader, dataloader, fewshot_k, batch_size, num_wor
                                 pin_memory=True,
                                 )
 
+    torch.manual_seed(seed)
     probe = torch.nn.Linear(features[0].shape[0], targets.max().item() + 1)
+    torch.nn.init.xavier_uniform_(probe.weight)
+    if probe.bias is not None:
+        torch.nn.init.zeros_(probe.bias)
+
     devices = [x for x in range(torch.cuda.device_count())]
     probe = probe.cuda()
     probe = torch.nn.DataParallel(probe, device_ids=devices)

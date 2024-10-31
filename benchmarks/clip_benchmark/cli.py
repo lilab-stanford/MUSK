@@ -243,7 +243,7 @@ def run(args, transforms=None):
     dataset_path = {
                     "skin": f"{data_root}/skincancer",
                     "pcam": f"{data_root}/pcamv1",
-                    "pannuke": f"{data_root}/pannuke/processed_threshold=10_0.3",
+                    "pannuke": f"{data_root}/pannuke",
                     "unitopatho": f"{data_root}/unitopatho/unitopath-public",
                     "unitopatho_retrieval": f"{data_root}/unitopatho/unitopath-public",  # image2image retrieval
                     "bracs_retrieval": f"{data_root}/brcas/BRACS_RoI/latest_version",   # image2image retrieval
