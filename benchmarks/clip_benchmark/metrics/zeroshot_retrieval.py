@@ -173,23 +173,21 @@ def get_image_embeddings(model, batch_images):
             with_head=True # MUST use pretrained head for retrieval!!!!!!
         )[0]
 
-    # CTransPath
-    elif 'swin' in model_name.lower():
-        image_features = model(batch_images)
-        image_features = F.normalize(image_features, dim=-1)
-
     elif 'clipmodel' in model_name.lower():
         image_features = model.get_image_features(batch_images)
         image_features = F.normalize(image_features, dim=-1)
 
     # image embeddings for CONCH
-    elif 'CoCa' in model_name:
-        image_features = model.encode_image(batch_images, proj_contrast=True, normalize=True)
-
     else:
-        # note: not sure if we want to train on l2-normalized features
-        image_features = model.encode_image(batch_images)
-        image_features = F.normalize(image_features, dim=-1)
+        """
+        https://github.com/mahmoodlab/CONCH
+        """
+        image_features = model.encode_image(
+            batch_images, 
+            proj_contrast=True, 
+            normalize=True
+            )
+
 
     return image_features
 

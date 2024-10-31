@@ -59,9 +59,11 @@ class Featurizer(torch.nn.Module):
             image_features = F.normalize(image_features, dim=-1)
 
         elif 'coca' in model_name.lower():  # use for conch
-            
+            """
+            The settings align with the official https://github.com/mahmoodlab/CONCH
+            """
             image_features = self.model.encode_image(
-                input, 
+                input,
                 proj_contrast=False, 
                 normalize=False
                 )
@@ -185,6 +187,7 @@ def evaluate(model, train_dataloader, dataloader, fewshot_k, batch_size, num_wor
 
     features = features[idxs]
     targets = targets[idxs]
+    # print(f"training idxs: {idxs}")
     feature_dset = FeatureDataset(features, targets)
 
     # now train the model
@@ -192,13 +195,12 @@ def evaluate(model, train_dataloader, dataloader, fewshot_k, batch_size, num_wor
                                 shuffle=True, num_workers=num_workers,
                                 pin_memory=True,
                                 )
-
     torch.manual_seed(seed)
     probe = torch.nn.Linear(features[0].shape[0], targets.max().item() + 1)
     torch.nn.init.xavier_uniform_(probe.weight)
     if probe.bias is not None:
         torch.nn.init.zeros_(probe.bias)
-
+    
     devices = [x for x in range(torch.cuda.device_count())]
     probe = probe.cuda()
     probe = torch.nn.DataParallel(probe, device_ids=devices)

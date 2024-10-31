@@ -12,9 +12,8 @@ from torchvision.datasets import (
 from . import voc2007, flickr, caltech101, imagenetv2, objectnet, babel_imagenet, sugar_crepe
 from torch.utils.data import default_collate
 from PIL import Image
-from .histopathology_datasets import PCamDataset, \
-    SkinDataset, PannukeDataset, UnitopathoDataset, \
-        UnitopathoRetrievalDataset, BRACS6ClsDataset, BRACS3ClsDataset, PathMMUDataset
+from .histopathology_datasets import SkinDataset, PannukeDataset, UnitopathoDataset, \
+        UnitopathoRetrievalDataset, PathMMUDataset
 
 
 def build_dataset(dataset_name, root="root", transform=None, split="test", download=True, annotation_file=None,
@@ -119,21 +118,6 @@ def build_dataset(dataset_name, root="root", transform=None, split="test", downl
                          val=False,
                          tumor=False)
 
-    elif dataset_name == "skin_tumor":
-        assert split in ("train", "test"), f"Only `train` and `test` split available for {dataset_name}"
-        ds = SkinDataset(root,
-                         "./data/tiles-v2.csv",
-                         transform=transform,
-                         train=train,
-                         val=False,
-                         tumor=True)
-
-    elif dataset_name == "pcam":
-        assert split in ("train", "test"), f"Only `train` and `test` split available for {dataset_name}"
-        ds = PCamDataset(root=root,
-                         transform=transform,
-                         train=train)
-
 
     elif dataset_name == "pannuke":
         assert split in ("train", "test"), f"Only `train` and `test` split available for {dataset_name}"
@@ -147,18 +131,6 @@ def build_dataset(dataset_name, root="root", transform=None, split="test", downl
         assert split in ("train", "test"), f"Only `train` and `test` split available for {dataset_name}"
         ds = UnitopathoRetrievalDataset(root=root, transform=transform, train=train)
 
-    elif dataset_name == "bracs6cls":
-        assert split in ("train", "test"), f"Only `train` and `test` split available for {dataset_name}"
-        ds = BRACS6ClsDataset(root=root, transform=transform, train=train)
-
-    elif dataset_name == "bracs3cls":
-        assert split in ("train", "test"), f"Only `train` and `test` split available for {dataset_name}"
-        ds = BRACS3ClsDataset(root=root, transform=transform, train=train)
-
-    elif dataset_name == "bracs_retrieval":
-        assert split in ("train", "test"), f"Only `train` and `test` split available for {dataset_name}"
-        ds = BRACS6ClsDataset(root=root, transform=transform, train=train, is_retrieval=True)
-    
     # zeros-shot image-text retrieval
     elif dataset_name == "pathmmu_retrieval":
         ds = PathMMUDataset(

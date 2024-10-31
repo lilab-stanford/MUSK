@@ -187,7 +187,14 @@ def run_classification(model, classifier, dataloader, device, amp=True):
                 
                 # image embeddings for CONCH
                 elif 'CoCa' in model_name:
-                    image_features = model.encode_image(images, proj_contrast=True, normalize=True)
+                    """
+                    https://github.com/mahmoodlab/CONCH
+                    """
+                    image_features = model.encode_image(
+                        images, 
+                        proj_contrast=True, 
+                        normalize=True
+                        )
 
                 # predict for clip model
                 else:

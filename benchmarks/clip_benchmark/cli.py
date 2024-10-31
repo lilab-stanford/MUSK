@@ -242,13 +242,12 @@ def run(args, transforms=None):
     data_root = args.dataset_root
     dataset_path = {
                     "skin": f"{data_root}/skincancer",
-                    "pcam": f"{data_root}/pcamv1",
                     "pannuke": f"{data_root}/pannuke",
                     "unitopatho": f"{data_root}/unitopatho/unitopath-public",
                     "unitopatho_retrieval": f"{data_root}/unitopatho/unitopath-public",  # image2image retrieval
-                    "bracs_retrieval": f"{data_root}/brcas/BRACS_RoI/latest_version",   # image2image retrieval
                     "pathmmu_retrieval": f"{data_root}/PathMMU",   # cross-modal retrieval
                     }
+    
     dataset_root = dataset_path[dataset_name]
    
     if 'musk' in args.model.lower():

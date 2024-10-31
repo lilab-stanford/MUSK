@@ -15,42 +15,6 @@ from pathlib import Path
 import io
 
 
-class PCamDataset(torch.utils.data.Dataset):
-    def __init__(self, root, transform=None, train=True):
-        if train:
-            self.data_x = h5py.File(os.path.join(root, "camelyonpatch_level_2_split_train_x.h5"), "r")['x']
-            self.data_y = h5py.File(os.path.join(root, "camelyonpatch_level_2_split_train_y.h5"), "r")['y']
-        else:
-            self.data_x = h5py.File(os.path.join(root, "camelyonpatch_level_2_split_test_x.h5"), "r")['x']
-            self.data_y = h5py.File(os.path.join(root, "camelyonpatch_level_2_split_test_y.h5"), "r")['y']
-
-        self.trans = transform
-
-        self.templates = ["a histopathology slide showing {c}",
-                          "histopathology image of {c}",
-                          "pathology tissue showing {c}",
-                          "presence of {c} tissue on image"]
-        self.classes = ['Lymph node', 'Lymph node containing metastatic tumor tissue']
-
-    def __len__(self):
-        return self.data_x.shape[0]
-
-    def __getitem__(self, item):
-        image = Image.fromarray(self.data_x[item])
-        label = self.data_y[item]
-
-        if self.trans is not None:
-            if self.trans.__class__.__name__ == "CLIPProcessor":
-                image = self.trans(images=image, return_tensors="pt")['pixel_values'].squeeze(0)
-            else:
-                image = self.trans(image)
-
-        label = int(numpy.squeeze(label))
-        return image, label
-
-
-
-
 class SkinDataset(torch.utils.data.Dataset):
     def __init__(self, root, csv_file, transform=None, train=True, val=False,
                  tumor=False):
@@ -231,9 +195,7 @@ class UnitopathoRetrievalDataset(torch.utils.data.Dataset):
     """
 
     def __init__(self, root, transform=None, train=True):
-        fp1 = json.load(open(os.path.join(root, "images_train.json")))
-        fp2 = json.load(open(os.path.join(root, "images_test.json")))
-        self.data = fp1 + fp2
+        self.data = json.load(open(os.path.join(root, "images.json")))
 
         self.root = root
         self.transform = transform
@@ -275,121 +237,6 @@ class UnitopathoRetrievalDataset(torch.utils.data.Dataset):
 
         return image, label
 
-
-
-class BRACS6ClsDataset(torch.utils.data.Dataset):
-    """
-    BRACS dataset ROIs are scanned in 40x; and the image size is around 1800*1800 - 2400*2400;
-    we get 224*224 at 5x; thus, the crop_size = 224*8.
-    """
-    def __init__(self, root, transform=None, train=True, is_retrieval=False):
-
-        self.transform = transform
-        self.root = root
-
-        self.crop_size = 224 * 8
-        df = pd.read_csv(os.path.join(root, "bright_roi.csv"))
-
-        if not is_retrieval:
-            # take data split for classification task
-            if train:
-                self.df = df[df['data_split'] == 'train']
-            else:
-                self.df = df[df['data_split'] == 'test']
-        else:
-            # use all images for image retrieval task
-            self.df = df
-
-        self.labels_dict = {"0_N": 0,
-                            "1_PB": 0,
-                            "2_UDH": 1,
-                            "3_FEA": 2,
-                            "4_ADH": 3,
-                            "5_DCIS": 4,
-                            "6_IC": 5
-                            }
-
-        self.classes = ["normal tissue or pathological benign",
-                        "Usual Ductal Hyperplasia ",
-                        "Flat Epithelia Atypia ",
-                        "Atypical Ductal Hyperplasia",
-                        "Ductal Carcinoma in Situ",
-                        "Invasive Carcinoma"
-                        ]
-
-        self.templates = ["a histopathology slide showing {c}",
-                          "histopathology image of {c}",
-                          "pathology tissue showing {c}",
-                          "presence of {c} tissue on image"]
-
-    def __len__(self):
-        return len(self.df)
-
-    def crop_or_pad_image(self, im):
-        desired_size = self.crop_size
-        old_size = im.size
-
-        if old_size[0] > desired_size or old_size[1] > desired_size:
-            # Crop the image
-            left = (old_size[0] - desired_size) / 2
-            top = (old_size[1] - desired_size) / 2
-            right = (old_size[0] + desired_size) / 2
-            bottom = (old_size[1] + desired_size) / 2
-
-            im = im.crop((left, top, right, bottom))
-        else:
-            # Pad the image
-            new_im = Image.new("RGB", (desired_size, desired_size))
-            new_im.paste(im, ((desired_size - old_size[0]) // 2, (desired_size - old_size[1]) // 2))
-            im = new_im
-
-        return im
-
-    def __getitem__(self, index):
-        while True:
-            try:
-                item = self.df.iloc[index]
-                image_path = os.path.join(self.root, item.image_path)
-                image = Image.open(image_path).convert("RGB")
-                image = self.crop_or_pad_image(image)
-                break
-            except:
-                print(f"{item.image_path} failed.")
-                os.system(f"rm -rf {item.image_path}")
-                index = random.randint(0, self.__len__() - 1)
-
-        if self.transform is not None:
-            if self.transform.__class__.__name__ == "CLIPProcessor":
-                image = self.transform(images=image, return_tensors="pt")['pixel_values'].squeeze(0)
-            else:
-                image = self.transform(image)
-
-        label = self.labels_dict[item.class_name]
-
-        return image, label
-
-
-class BRACS3ClsDataset(BRACS6ClsDataset):
-    """
-    BRACS dataset ROIs are scanned in 40x; and the image size is around 1800*1800 - 2400*2400;
-    we get 224*224 at 5x; thus, the crop_size = 224*8.
-    """
-    def __init__(self, root, transform=None, train=True, is_retrieval=False):
-        super(BRACS3ClsDataset, self).__init__(root, transform, train, is_retrieval)
-
-        self.labels_dict = {"0_N": 0,
-                            "1_PB": 0,
-                            "2_UDH": 0,
-                            "3_FEA": 1,
-                            "4_ADH": 1,
-                            "5_DCIS": 2,
-                            "6_IC": 2
-                            }
-
-        self.classes = ["Non-cancerous	",
-                        "Pre-cancerous	 ",
-                        "Cancerous "
-                        ]
 
 
 
@@ -463,3 +310,4 @@ class PathMMUDataset(torch.utils.data.Dataset):
             image = self.transform(image)
         
         return image, item['caption']
+

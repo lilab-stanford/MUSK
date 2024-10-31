@@ -65,18 +65,17 @@ def evaluate(model, dataloader, device, amp=True, recall_k_list=[1, 3, 5]):
                 )
                 image_features = outputs[0]
 
-            # CTransPath
-            elif 'swin' in model_name.lower():
-                image_features = model(batch_images)
-
             elif 'clipmodel' in model_name.lower():
                 image_features = model.get_image_features(batch_images)
 
             else:
                 # note: not sure if we want to train on l2-normalized features
-                image_features = model.encode_image(batch_images)
+                image_features = model.encode_image(
+                    batch_images,
+                    proj_contrast=True, 
+                    normalize=True
+                    )
 
-            # batch_images_emb = F.normalize(image_features, dim=-1)
             batch_images_emb = image_features
 
         batch_images_emb_list.append(batch_images_emb.cpu())
