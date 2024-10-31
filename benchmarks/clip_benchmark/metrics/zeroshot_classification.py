@@ -293,22 +293,6 @@ def evaluate(model, dataloader, tokenizer, classnames, templates, device, amp=Tr
 
     logits, target = run_classification(model, classifier, dataloader, device, amp=amp)
     
-    # ------------------------ save prob and taregt for furter analysis ------------------------#
-    save_root = "./results/zs_cls"
-    os.makedirs(save_root, exist_ok=True)
-
-    logit_dir = list(glob.glob(f"{save_root}/logit_*"))
-    target_dir = list(glob.glob(f"{save_root}/target_*"))
-
-    cnt = len(logit_dir)
-    with open(f'{save_root}/logit_{cnt}.npy', 'wb') as f:
-        np.save(f, logits.numpy())
-
-    cnt = len(target_dir)
-    with open(f'{save_root}/target_{cnt}.npy', 'wb') as f:
-        np.save(f, target.numpy())
-    # ------------------------ save prob and taregt for furter analysis ------------------------#
-
     is_multilabel = (len(target.shape) == 2)
 
     if is_multilabel:
