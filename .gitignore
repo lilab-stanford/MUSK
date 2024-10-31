@@ -63,3 +63,5 @@ downloads
 *.csv
 *.json
 !zero2_config.json
+!conch_byte_level_bpe_uncased.json
+!conch_ViT-B-16.json
