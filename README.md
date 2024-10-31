@@ -67,7 +67,7 @@ The pretraining code has been tested on 64 NVIDIA V100 GPUs with 32 GB memory. T
 
 Please refer to `./musk/demo.ipynb` for a demonstration. 
 
-Download the [model weight](https://drive.google.com/file/d/1Suwo7xumPVeNW-_ggJGi0VkTmaEGsOGo/view?usp=sharing) and [tokenizer](https://drive.google.com/file/d/1NJGch0cIhYzSSqTCJCRaCgJqDIG12d8H/view?usp=sharing), and place them in the `./musk/models` directory.
+Download the [model weight](https://drive.google.com/file/d/1Suwo7xumPVeNW-_ggJGi0VkTmaEGsOGo/view?usp=sharing) and place them in the `./musk/models` directory.
 
 
 ```shell
