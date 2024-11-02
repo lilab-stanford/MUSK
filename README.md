@@ -53,10 +53,11 @@ cd MUSK
 
 Create a new enviroment with anaconda.
 ```shell
-conda create -n musk python=3.10 -y
+conda create -n musk python=3.10 -y --no-default-packages
 conda activate musk
 pip install --upgrade pip
 pip install -r requirements.txt
+pip install -e .
 ```
 
 ## Hardware Requirements
