@@ -221,7 +221,7 @@ and more tasks in `./benchmarks/demo.ipynb`.
 The project was built on top of many open-source repositories such as [Quilt1M](https://github.com/wisdomikezogwo/quilt1m) (training data image-text pairs), [torchscale](https://github.com/microsoft/torchscale) (model implementation), [accelerate](https://github.com/huggingface/accelerate) (model pretraining), [deepspeed](https://github.com/microsoft/DeepSpeed) (model pretraining), [pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning) (downstream finetuning), and [CLIP Benchmark](https://github.com/LAION-AI/CLIP_benchmark) (model evaluation). We thank the authors and developers for their contributions.
 
 ## Issues
-- Please open new threads or address all questions to xiangjx@stanford.edu
+- Please open new threads or address all questions to xiangjx@stanford.edu or xiyue.wang.scu@gmail.com.
 
 ## License
 
