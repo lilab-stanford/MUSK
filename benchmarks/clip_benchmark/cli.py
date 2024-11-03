@@ -286,9 +286,20 @@ def run(args, transforms=None):
 
             from musk import modeling
             from musk import utils as mutils
+            import huggingface_hub
 
-            tokenizer_path = args.pretrained.replace("musk.pth", "tokenizer.spm")
+            # tokenizer_path = args.pretrained.replace("musk.pth", "tokenizer.spm")
+            local_dir = os.path.join(os.path.expanduser("~"), ".cache/")
+            hub_name = args.pretrained.split(":")[1]
+            huggingface_hub.hf_hub_download(
+                hub_name, 
+                filename="tokenizer.spm", 
+                local_dir=local_dir, 
+                force_download=True
+            )
+            tokenizer_path = os.path.join(local_dir, "tokenizer.spm")
             tokenizer = XLMRobertaTokenizer(tokenizer_path)
+
             img_size = 384 if '384' in args.model else 224
 
             transform = torchvision.transforms.Compose([
@@ -446,6 +457,8 @@ def run(args, transforms=None):
     
     if args.verbose:
         print(f"Dump results to: {output}")
+        
+    os.makedirs("results", exist_ok=True)
     with open(output, "a+") as f:
         json.dump(dump, f)
         f.write('\n')
