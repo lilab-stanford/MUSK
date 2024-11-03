@@ -1,5 +1,7 @@
 
 import torch
+import huggingface_hub
+import os
 
 def load_state_dict(model, state_dict, prefix='', ignore_missing="relative_position_index"):
     missing_keys = []
@@ -52,12 +54,27 @@ def load_state_dict(model, state_dict, prefix='', ignore_missing="relative_posit
 
 
 # The implementation code is modified from DeiT (https://github.com/facebookresearch/deit.git)
-def load_model_and_may_interpolate(ckpt_path, model, model_key, model_prefix):
-    if ckpt_path.startswith('https'):
-        checkpoint = torch.hub.load_state_dict_from_url(
-            ckpt_path, map_location='cpu', check_hash=True)
+def load_model_and_may_interpolate(
+        ckpt_path, 
+        model,
+        model_key, 
+        model_prefix, 
+        local_dir: str = os.path.join(os.path.expanduser("~"), ".cache/")
+        ):
+    
+    if ckpt_path.startswith("hf_hub:"):
+        hub_name = ckpt_path.split(":")[1]
+        huggingface_hub.hf_hub_download(
+            hub_name, 
+            filename="musk.pth", 
+            local_dir=local_dir, 
+            force_download=True
+            )
+        local_path = os.path.join(local_dir, "musk.pth")
     else:
-        checkpoint = torch.load(ckpt_path, map_location='cpu')
+        local_path = ckpt_path
+    
+    checkpoint = torch.load(local_path, map_location='cpu')
 
     print("Load ckpt from %s" % ckpt_path)
     checkpoint_model = None

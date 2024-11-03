@@ -3,8 +3,8 @@
 
 import torch.nn as nn
 
-from torchscale.component.multihead_attention import MultiheadAttention
-from torchscale.component.multiway_network import MultiwayNetwork
+from ..component.multihead_attention import MultiheadAttention
+from ..component.multiway_network import MultiwayNetwork
 
 
 def init_bert_params(module):

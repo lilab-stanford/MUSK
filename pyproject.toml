@@ -14,10 +14,10 @@ requires-python = ">=3.10"
 
 [tool.setuptools.packages.find]
 include = ["musk", "musk.*"]
-exclude = ["benchmarks*", "pretrain*"]
+exclude = ["benchmarks*", "pretrain*", "assets*"]
 
 [tool.wheel]
-exclude = ["benchmarks*", "pretrain*"]
+exclude = ["benchmarks*", "pretrain*", "assets*"]
 
 [tool.black]
 line-length = 200

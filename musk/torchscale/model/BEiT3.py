@@ -4,13 +4,13 @@
 import torch
 import torch.nn as nn
 
-from torchscale.architecture.encoder import Encoder
-from torchscale.component.embedding import (
+from ..architecture.encoder import Encoder
+from ..component.embedding import (
     PositionalEmbedding,
     TextEmbedding,
     VisionEmbedding,
 )
-from torchscale.component.multiway_network import MutliwayEmbedding
+from ..component.multiway_network import MutliwayEmbedding
 
 
 class BEiT3(nn.Module):

@@ -12,14 +12,14 @@ try:
 except ModuleNotFoundError:
     from torch.nn import LayerNorm
 
-from torchscale.architecture.utils import init_bert_params
-from torchscale.component.droppath import DropPath
-from torchscale.component.feedforward_network import FeedForwardNetwork, make_experts
-from torchscale.component.multihead_attention import MultiheadAttention
-from torchscale.component.multiway_network import MultiwayWrapper, set_split_position
-from torchscale.component.relative_position_bias import RelativePositionBias
-from torchscale.component.xmoe.moe_layer import MOELayer
-from torchscale.component.xmoe.routing import Top1Gate, Top2Gate
+from .utils import init_bert_params
+from ..component.droppath import DropPath
+from ..component.feedforward_network import FeedForwardNetwork, make_experts
+from ..component.multihead_attention import MultiheadAttention
+from ..component.multiway_network import MultiwayWrapper, set_split_position
+from ..component.relative_position_bias import RelativePositionBias
+from ..component.xmoe.moe_layer import MOELayer
+from ..component.xmoe.routing import Top1Gate, Top2Gate
 
 
 class EncoderLayer(nn.Module):

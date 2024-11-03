@@ -60,28 +60,29 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
-## Hardware Requirements
+## Model Download
 
-The pretraining code has been tested on 64 NVIDIA V100 GPUs with 32 GB memory. The evaluation code has been tested on an NVIDIA GTX A6000 GPU with 48 GB memory.
+The MUSK models can be accessed from [HuggingFace Hub](https://huggingface.co/xiangjx/musk).
+
+You need to agree to the terms to access the models and login with your HuggingFace write token:
+```python
+from huggingface_hub import login
+login(<huggingface write token>)
+```
+
 
 ## Basic Usage: MUSK as a Vision-Language Encoder
 
-Please refer to `./musk/demo.ipynb` for a demonstration. 
+Please refer to `demo.ipynb` for a demonstration. 
 
-Download the [model weight](https://drive.google.com/file/d/1Suwo7xumPVeNW-_ggJGi0VkTmaEGsOGo/view?usp=sharing) and place them in the `./musk/models` directory.
-
-
-```shell
-cd ./musk
-```
 
 1. Load the MUSK model  
 
 ```python
+from musk import utils, modeling
 from timm.models import create_model
-model = create_model("musk_large_patch16_384", vocab_size=64010).eval()
-utils.load_model_and_may_interpolate("./models/musk.pth", model, 'model|module', '')
-model.to(DEVICE, dtype=torch.float16)
+model = create_model("musk_large_patch16_384", vocab_size=64010)
+utils.load_model_and_may_interpolate("hf_hub:xiangjx/musk", model, 'model|module', '')
 model.eval()
 ```
 
@@ -89,7 +90,7 @@ model.eval()
 ```python
 with torch.inference_mode():
    image_embeddings = model(
-      image=img_tensor.to(DEVICE, dtype=torch.float16),
+      image=img_tensor.to(dtype=torch.float16),
       with_head=True, 
       out_norm=True
       )[0]  # return (vision_cls, text_cls)
@@ -101,14 +102,14 @@ The `with_head` parameter controls the projection head at the last layer. Set th
 
 3. Encode text with MUSK
 ```python
-tokenizer = XLMRobertaTokenizer("./models/tokenizer.spm")
+tokenizer = XLMRobertaTokenizer("./musk/models/tokenizer.spm")
 text = 'histopathology image of lung adenocarcinoma'
 txt_ids, pad = xlm_tokenizer(txt, tokenizer, max_len=100)
 
 with torch.inference_mode():
    text_embeddings = model(
-      text_description=txt_ids.to(DEVICE),
-      padding_mask=pad.to(DEVICE),
+      text_description=txt_ids,
+      padding_mask=pad,
       with_head=True, 
       out_norm=True
    )[1]  # return (vision_cls, text_cls)
@@ -158,8 +159,8 @@ The main file is `clip_benchmark.cli` and includes the following options:
 
 Set the `models.txt` file with entries in the format: `(model_name, model_path)`. For example, if you want to run both MUSK and [CONCH](https://github.com/mahmoodlab/CONCH) for comparison, your `models.txt` might look like this:
 ```shell
-musk_large_patch16_384,/mnt/MUSK/musk/models/musk.pth
-conch,/mnt/models/conch/conch.pt
+musk_large_patch16_384,hf_hub:xiangjx/musk
+conch,/path/to/conch.pt
 ```
 Alternatively, you can remove the CONCH entry and run MUSK alone.
 

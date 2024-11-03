@@ -7,8 +7,8 @@ from timm.models.registry import register_model
 import numpy as np
 
 from timm.models.layers import trunc_normal_ as __call_trunc_normal_
-from torchscale.model.BEiT3 import BEiT3
-from torchscale.architecture.config import EncoderConfig
+from .torchscale.model.BEiT3 import BEiT3
+from .torchscale.architecture.config import EncoderConfig
 import math
 
 class TwoLayerMLP(nn.Module):

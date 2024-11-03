@@ -281,9 +281,12 @@ def run(args, transforms=None):
             from timm.data.constants import IMAGENET_INCEPTION_MEAN, IMAGENET_INCEPTION_STD
             from timm.models import create_model
 
-            import clip_benchmark.models.musk_modeling
-            import clip_benchmark.models.musk_utils as mutils
-            
+            # import clip_benchmark.models.musk_modeling
+            # import clip_benchmark.models.musk_utils as mutils
+
+            from musk import modeling
+            from musk import utils as mutils
+
             tokenizer_path = args.pretrained.replace("musk.pth", "tokenizer.spm")
             tokenizer = XLMRobertaTokenizer(tokenizer_path)
             img_size = 384 if '384' in args.model else 224
