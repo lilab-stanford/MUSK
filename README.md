@@ -62,7 +62,7 @@ Please refer to `demo.ipynb` for a demonstration.
 ```python
 from musk import utils, modeling
 from timm.models import create_model
-model = create_model("musk_large_patch16_384", vocab_size=64010)
+model = create_model("musk_large_patch16_384")
 utils.load_model_and_may_interpolate("hf_hub:xiangjx/musk", model, 'model|module', '')
 model.to(device="cuda", dtype=torch.float16)
 model.eval()
