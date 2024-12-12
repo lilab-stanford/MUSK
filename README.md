@@ -22,7 +22,7 @@ We develop **M**ultimodal transformer with **U**nified ma**SK** modeling (MUSK),
 
 - **Nov 8, 2024**. Our manuscript, *"A Vision-Language Foundation Model for Precision Oncology,"* has been officially accepted by *Nature*.  
 
-- **Nov 3, 2024**. The initial release of the **MUSK** model code. The model weights will be released once the paper is published online (scheduled on Jan 8, 2025). 
+- **Nov 3, 2024**. The initial release of the **MUSK** model code. The model weights will be released once the paper is published online. 
 
 ## Installation
 
