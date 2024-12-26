@@ -1,5 +1,9 @@
 
-## MUSK: A Vision-Language Foundation Model for Precision Oncology
+<!-- ## MUSK: A Vision-Language Foundation Model for Precision Oncology
+(Nature 2024, in press) -->
+
+![header](https://capsule-render.vercel.app/api?type=soft&height=80&color=timeGradient&text=MUSK:%20A%20Vision-Language%20Foundation%20Model%20for%20Precision%20Oncology&fontSize=25)
+
 (Nature 2024, in press)
 
 Jinxi Xiang‡, Xiyue Wang‡, Xiaoming Zhang, Yinghua Xi, Feyisope Eweje, Yijiang Chen, Yuchen
