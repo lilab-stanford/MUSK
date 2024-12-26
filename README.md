@@ -8,9 +8,9 @@
 
 [Jinxi Xiang](https://jinxixiang.netlify.app/)‡, Xiyue Wang‡, Xiaoming Zhang, Yinghua Xi, Feyisope Eweje, Yijiang Chen, Yuchen
 Li, Colin Bergstrom, Matthew Gopaulchan, Ted Kim, Kun-Hsing Yu, Sierra Willens, Francesca Maria
-Olguin, Jeffrey J. Nirschl, Joel Neal, Maximilian Diehn, Sen Yang<sup>+</sup>, Ruijiang Li<sup>+</sup> (‡Equal Contribution)
+Olguin, Jeffrey J. Nirschl, Joel Neal, Maximilian Diehn, Sen Yang<sup>+</sup>, [Ruijiang Li]((https://med.stanford.edu/lilab.html))<sup>+</sup> (‡Equal Contribution)
 
-_Lead Contact_: [Ruijiang Li](https://med.stanford.edu/lilab.html), Ph.D.
+_Lead Contact_: Ruijiang Li, Ph.D.
 
 Stanford University, Harvard University
 
