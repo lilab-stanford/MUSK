@@ -1,0 +1,1 @@
+musk_large_patch16_384,hf_hub:xiangjx/musk

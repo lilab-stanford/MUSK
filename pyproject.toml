@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "musk"
+version = "1.0.0"
+description = "MUSK: A Vision-Language Foundation Model for Precision Oncology"
+readme = "README.md"
+requires-python = ">=3.10"
+[project.urls]
+"Homepage" = "https://github.com/lilab-stanford/MUSK"
+"Bug Tracker" = "https://github.com/lilab-stanford/MUSK"
+
+[tool.setuptools.packages.find]
+include = ["musk", "musk.*"]
+exclude = ["benchmarks*", "pretrain*", "assets*"]
+
+[tool.wheel]
+exclude = ["benchmarks*", "pretrain*", "assets*"]
+
+[tool.black]
+line-length = 200
