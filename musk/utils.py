@@ -57,16 +57,14 @@ def batched_forward(model, x, batch_size=-1):
     return torch.cat(outs, dim=0)
 
 
-#  ------------------------------------------------------------------------------------------
-#  Copyright (c) 2024 Baifeng Shi.
-#  All rights reserved.
-#
-#  Licensed under the MIT License (MIT). See LICENSE in the repo root for license information.
-#  ------------------------------------------------------------------------------------------
 """
-When Do We Not Need Larger Vision Models?
-B. Shi, Z. Wu, M. Mao, X. Wang and T. Darrell
-ArXiv 2024 Vol. abs/2403.13043 
+During MUSK pretraining, we used multi-scale image inputs, i.e., 
+incorporating mixed magnifications. 
+To align with this, we leverage MUSK's multi-scale capability during inference 
+for linear probe and MIL tasks. Multi-scale was not applied to zero-shot tasks, 
+as it is the CLS token that was used for modality alignment in contrastive learning.
+
+The code implementation of MultiScaleForward() is derived from: ArXiv 2024 Vol. abs/2403.13043 
 """
 def MultiScaleForward(
         model, 
