@@ -104,7 +104,7 @@ class FeatureDataset(Dataset):
         return self.features[i], self.targets[i]
 
 
-def evaluate(model, train_dataloader, dataloader, fewshot_k, batch_size, num_workers, lr, epochs,
+def evaluate(model, train_dataloader, dataloader, fewshot_k, batch_size_eval, num_workers, lr, epochs,
              model_id, seed, feature_root, device, amp=True, verbose=False, ms_aug=False):
     # warning: we currently only support non-multi-label classification datasets.
     assert device == 'cuda'  # need to use cuda for this else too slow
@@ -207,7 +207,7 @@ def evaluate(model, train_dataloader, dataloader, fewshot_k, batch_size, num_wor
     feature_dset = FeatureDataset(features, targets)
 
     # now train the model
-    feature_loader = DataLoader(feature_dset, batch_size=batch_size,
+    feature_loader = DataLoader(feature_dset, batch_size=batch_size_eval,
                                 shuffle=True, num_workers=num_workers,
                                 pin_memory=True,
                                 )
@@ -267,7 +267,7 @@ def evaluate(model, train_dataloader, dataloader, fewshot_k, batch_size, num_wor
     features = torch.load(os.path.join(feature_dir, 'features_val.pt'))
     targets = torch.load(os.path.join(feature_dir, 'targets_val.pt'))
     feature_dset = FeatureDataset(features, targets)
-    feature_loader = DataLoader(feature_dset, batch_size=batch_size,
+    feature_loader = DataLoader(feature_dset, batch_size=batch_size_eval,
                                 shuffle=True, num_workers=num_workers,
                                 pin_memory=True,
                                 )
