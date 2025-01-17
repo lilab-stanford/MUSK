@@ -67,6 +67,7 @@ Please refer to `demo.ipynb` for a demonstration.
 1. Load the MUSK model  
 
 ```python
+import torch
 from musk import utils, modeling
 from timm.models import create_model
 model = create_model("musk_large_patch16_384")
