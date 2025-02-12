@@ -217,7 +217,7 @@ and more tasks in `./benchmarks/demo.ipynb`.
 
 ## Acknowledgements
 
-The project was built on many amazing open-source repositories: [Quilt1M](https://github.com/wisdomikezogwo/quilt1m), [PathAsst](https://github.com/superjamessyx/Generative-Foundation-AI-Assistant-for-Pathology), [torchscale](https://github.com/microsoft/torchscale), [accelerate](https://github.com/huggingface/accelerate) (model pretraining), [deepspeed](https://github.com/microsoft/DeepSpeed) (model pretraining), [pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning) (downstream finetuning), and [CLIP Benchmark](https://github.com/LAION-AI/CLIP_benchmark) (model evaluation). We thank the authors and developers for their contributions.
+The project was built on many amazing open-source repositories: [Quilt1M](https://github.com/wisdomikezogwo/quilt1m), [PathAsst](https://github.com/superjamessyx/Generative-Foundation-AI-Assistant-for-Pathology), [torchscale](https://github.com/microsoft/torchscale), [accelerate](https://github.com/huggingface/accelerate) (model pretraining), [deepspeed](https://github.com/microsoft/DeepSpeed) (model pretraining), [pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning) (downstream finetuning), [CLIP Benchmark](https://github.com/LAION-AI/CLIP_benchmark) (model evaluation), and  [PORPOISE](https://github.com/mahmoodlab/PORPOISE/tree/master) (prognosis). We thank the authors and developers for their contributions.
 
 ## Issues
 - Please open new threads or address questions to xiangjx@stanford.edu or xiyue.wang.scu@gmail.com
