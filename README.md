@@ -98,12 +98,12 @@ with torch.inference_mode():
         out_norm=False,
         ms_aug=True,
         return_global=True  
-        )[0]  # return (vision_cls, text_cls)
+        )[0]
 
 ```
-- `with_head=True`: Enable head for image-text retrieval.  
-- `out_norm=True`: Apply normalization.  
-- `ms_aug=True`: Use multiscale augmentation (for tasks, e.g., linear probe classification, MIL).  
+- `with_head=True`: Utilize this head for zero-shot tasks (image-text retrieval and zero-shot image classification).
+- `out_norm=True`: Apply normalization, especially for zero-shot tasks.  
+- `ms_aug=True`: Use multiscale image augmentation for tasks, e.g., linear probe classification, MIL; set it `False` for zero-shot tasks.
 - `return_global=True`: Return only [CLS] token, exclude patch tokens.  
 
 
@@ -121,9 +121,13 @@ with torch.inference_mode():
       out_norm=True,
       ms_aug=False,
       return_global=True 
-   )[1]  # return (vision_cls, text_cls)
+   )[1]
 ```
 
+- `with_head=True`: Utilize this head for zero-shot tasks (image-text retrieval and zero-shot image classification).
+- `out_norm=True`: Apply normalization, especially for zero-shot tasks.  
+- `ms_aug=True`: This parameter is ineffective for text inputs.
+- `return_global=True`: Return only [CLS] token, exclude patch tokens.  
 
 ## Evaluation on Patch-level Benchmarks
 
