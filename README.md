@@ -111,7 +111,7 @@ with torch.inference_mode():
 ```python
 tokenizer = XLMRobertaTokenizer("./musk/models/tokenizer.spm")
 text = ['histopathology image of lung adenocarcinoma']
-txt_ids, pad = utils.xlm_tokenizer(txt, tokenizer, max_len=100)
+txt_ids, pad = utils.xlm_tokenizer(text, tokenizer, max_len=100)
 
 with torch.inference_mode():
    text_embeddings = model(
@@ -230,3 +230,4 @@ The project was built on many amazing open-source repositories: [Quilt1M](https:
 ## License
 
 This model and associated code are released under the CC-BY-NC-ND 4.0 license and may only be used for non-commercial, academic research purposes with proper attribution. Any commercial use, sale, or other monetization of the MUSK model and its derivatives, which include models trained on outputs from the MUSK model or datasets created from the MUSK model, is prohibited and requires prior approval.
+
