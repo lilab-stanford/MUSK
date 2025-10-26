@@ -111,7 +111,7 @@ with torch.inference_mode():
 ```python
 tokenizer = XLMRobertaTokenizer("./musk/models/tokenizer.spm")
 text = ['histopathology image of lung adenocarcinoma']
-txt_ids, pad = utils.xlm_tokenizer(txt, tokenizer, max_len=100)
+txt_ids, pad = utils.xlm_tokenizer(text, tokenizer, max_len=100)
 
 with torch.inference_mode():
    text_embeddings = model(
